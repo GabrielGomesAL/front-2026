@@ -3,63 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aluno Online - Dashboard</title>
-  <link rel="stylesheet" href="./style.css" />
+  <title>Aluno Online</title>
+  <link rel="stylesheet" href="/src/style.css" />
 </head>
 <body>
   <aside class="sidebar">
-    <h1>Aluno Online</h1>
+    <p class="brand">
+      <img src="/learn.svg" alt="Ícone do portal Aluno Online" class="brand-icon" />
+      <span>Aluno Online</span>
+    </p>
 
     <nav aria-label="Menu principal">
-      <ul>
+      <ul class="menu">
         <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Avisos</a></li>
-        <li><a href="#">Calendário</a></li>
-        <li><a href="#">Disciplinas</a></li>
-        <li><a href="#">Perfil</a></li>
+        <li><a href="#">Notas</a></li>
+        <li><a href="#">Faltas</a></li>
+        <li><a href="#">Boletos</a></li>
+        <li><a href="#">Requerimentos</a></li>
+        <li><a href="#">Sair</a></li>
       </ul>
     </nav>
   </aside>
 
   <main class="content">
     <header class="topbar">
-      <section class="topbar-text">
-        <p>Olá, Gabriel</p>
-        <h2>Bem-vindo ao seu painel</h2>
+      <section class="welcome">
+        <h1>Olá, Aluno!</h1>
+        <p>Bem-vindo ao portal do aluno</p>
       </section>
 
       <img
-        src="https://via.placeholder.com/56"
+        src="/avatar.svg"
         alt="Avatar do usuário"
+        class="avatar"
       />
     </header>
 
-    <section class="dashboard" aria-label="Conteúdo principal do dashboard">
+    <section class="cards" aria-label="Conteúdo principal do dashboard">
       <article class="card">
-        <h3>Mural de Avisos</h3>
+        <header class="card-header">
+          <h2>Mural de Avisos</h2>
+        </header>
         <ul>
-          <li>Entrega do trabalho final até sexta-feira.</li>
-          <li>Nova atividade prática disponível na plataforma.</li>
-          <li>Reunião com a coordenação na próxima semana.</li>
+          <li>Inscrição para o projeto de extensão</li>
+          <li>Eleição para representante de turma</li>
         </ul>
       </article>
 
       <article class="card">
-        <h3>Calendário Acadêmico</h3>
+        <header class="card-header">
+          <h2>Calendário Acadêmico</h2>
+        </header>
         <ul>
-          <li>18/03 - Início das avaliações</li>
-          <li>22/03 - Prazo para envio da atividade</li>
-          <li>28/03 - Encerramento do módulo</li>
+          <li>23/02 - Início do período letivo 2026-1</li>
+          <li>25/04 - Prazo final para aplicação da P1</li>
+          <li>23/06 - Prazo final para aplicação da P2</li>
+          <li>04/07 - Fim do período letivo 2026-1</li>
         </ul>
       </article>
 
       <article class="card">
-        <h3>Minhas Disciplinas</h3>
+        <header class="card-header">
+          <h2>Minhas Disciplinas</h2>
+        </header>
         <ul>
-          <li>HTML e CSS</li>
-          <li>JavaScript</li>
-          <li>Banco de Dados</li>
-          <li>Arquitetura de Computadores</li>
+          <li>BI e Data Warehousing</li>
+          <li>Construção de Frontend</li>
+          <li>Necessidades Especiais em Software</li>
         </ul>
       </article>
     </section>

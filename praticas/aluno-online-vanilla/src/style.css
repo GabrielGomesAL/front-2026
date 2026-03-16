@@ -1,10 +1,11 @@
 :root {
     --cor-fundo: #e9e9e9;
     --cor-texto: #303030;
-    --cor-sidebar: #1f2937;
+    --cor-sidebar: #dcdcdc;
+    --cor-card: #efefef;
+    --cor-faixa: #dddddd;
+    --cor-borda: #d2d2d2;
     --cor-branca: #ffffff;
-    --cor-borda: #d1d5db;
-    --cor-destaque: #2563eb;
     --fonte-padrao: Arial, Helvetica, sans-serif;
     --font-weight-padrao: 400;
     --line-height-padrao: 1.5;
@@ -22,120 +23,153 @@
     font-family: var(--fonte-padrao);
     font-weight: var(--font-weight-padrao);
     line-height: var(--line-height-padrao);
-  }
-  
-  body {
-    display: flex;
-    flex-direction: column;
     min-height: 100vh;
   }
   
   .sidebar {
-    background-color: var(--cor-sidebar);
-    color: var(--cor-branca);
-    padding: 1.5rem 1rem;
-  }
-  
-  .sidebar h1 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .sidebar nav ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  
-  .sidebar nav a {
-    color: var(--cor-branca);
-    text-decoration: none;
-    font-weight: 600;
-  }
-  
-  .sidebar nav a:hover {
-    color: #cbd5e1;
+    display: none;
   }
   
   .content {
-    flex: 1;
     padding: 1rem;
   }
   
   .topbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
-    background-color: var(--cor-branca);
-    padding: 1rem;
-    border: 1px solid var(--cor-borda);
-    border-radius: 12px;
     margin-bottom: 1rem;
   }
   
-  .topbar-text p {
+  .welcome h1 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+  
+  .welcome p {
     font-size: 0.95rem;
+    font-weight: 700;
+    max-width: 220px;
   }
   
-  .topbar-text h2 {
-    font-size: 1.25rem;
-    margin-top: 0.25rem;
+  .avatar {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
   }
   
-  .topbar img {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--cor-destaque);
-  }
-  
-  .dashboard {
+  .cards {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
   }
   
   .card {
-    background-color: var(--cor-branca);
+    background-color: var(--cor-card);
     border: 1px solid var(--cor-borda);
-    border-radius: 12px;
-    padding: 1rem;
+    border-radius: 6px;
+    overflow: hidden;
   }
   
-  .card h3 {
-    margin-bottom: 0.75rem;
-    color: var(--cor-destaque);
+  .card-header {
+    background-color: var(--cor-faixa);
+    padding: 0.45rem 0.75rem;
+  }
+  
+  .card-header h2 {
+    font-size: 1rem;
+    font-weight: 700;
   }
   
   .card ul {
-    list-style-position: inside;
+    list-style: none;
+    padding: 0.85rem 0.75rem 1rem;
   }
   
-  .card li + li {
-    margin-top: 0.5rem;
+  .card li {
+    margin-bottom: 0.35rem;
+    font-size: 0.95rem;
   }
   
-  /* DESKTOP */
   @media (min-width: 768px) {
     body {
-      flex-direction: row;
+      display: flex;
     }
   
     .sidebar {
-      width: 260px;
+      display: block;
+      width: 250px;
       min-height: 100vh;
-      padding: 2rem 1.25rem;
+      background-color: var(--cor-sidebar);
+      padding: 1rem 0.75rem;
+      flex-shrink: 0;
+    }
+  
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+  
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+    }
+  
+    .menu {
+      list-style: disc;
+      padding-left: 1.2rem;
+    }
+  
+    .menu li {
+      margin-bottom: 1.8rem;
+    }
+  
+    .menu a {
+      color: var(--cor-texto);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.98rem;
     }
   
     .content {
       flex: 1;
-      padding: 2rem;
+      padding: 1rem 1.1rem;
     }
   
-    .dashboard {
+    .topbar {
+      margin-bottom: 1.1rem;
+    }
+  
+    .welcome h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.7rem;
+    }
+  
+    .welcome p {
+      font-size: 1rem;
+      max-width: none;
+    }
+  
+    .avatar {
+      width: 48px;
+      height: 48px;
+    }
+  
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .cards {
       grid-template-columns: repeat(2, 1fr);
+      align-items: start;
     }
   }
