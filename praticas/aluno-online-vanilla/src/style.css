@@ -3,10 +3,10 @@
     --cor-texto: #303030;
     --cor-sidebar: #dcdcdc;
     --cor-card: #efefef;
-    --cor-faixa: #dddddd;
+    --cor-faixa: #ddd;
     --cor-borda: #d2d2d2;
-    --cor-branca: #ffffff;
-    --fonte-padrao: Arial, Helvetica, sans-serif;
+    --cor-branca: #fff;
+    --fonte-padrao: arial, helvetica, sans-serif;
     --font-weight-padrao: 400;
     --line-height-padrao: 1.5;
   }
@@ -30,11 +30,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #000;
-    color: #fff;
-    padding: 0.75rem 1rem;
-    text-decoration: none;
     z-index: 9999;
+    padding: 0.75rem 1rem;
+    color: var(--cor-branca);
+    text-decoration: none;
+    background: #000;
     transform: translateY(-120%);
   }
   
@@ -52,22 +52,22 @@
   
   .topbar {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     gap: 1rem;
+    align-items: flex-start;
+    justify-content: space-between;
     margin-bottom: 1rem;
   }
   
   .welcome h1 {
+    margin-bottom: 0.4rem;
     font-size: 1.1rem;
     font-weight: 700;
-    margin-bottom: 0.4rem;
   }
   
   .welcome h2 {
+    max-width: 220px;
     font-size: 0.95rem;
     font-weight: 700;
-    max-width: 220px;
   }
   
   .avatar {
@@ -78,20 +78,20 @@
   
   .cards {
     display: grid;
-    grid-template-columns: 1fr;
     gap: 1rem;
+    grid-template-columns: 1fr;
   }
   
   .card {
-    background-color: var(--cor-card);
+    overflow: hidden;
     border: 1px solid var(--cor-borda);
     border-radius: 6px;
-    overflow: hidden;
+    background-color: var(--cor-card);
   }
   
   .card-header {
-    background-color: var(--cor-faixa);
     padding: 0.45rem 0.75rem;
+    background-color: var(--cor-faixa);
   }
   
   .card-header h3 {
@@ -100,8 +100,8 @@
   }
   
   .card ul {
-    list-style: none;
     padding: 0.85rem 0.75rem 1rem;
+    list-style: none;
   }
   
   .card li {
@@ -109,7 +109,7 @@
     font-size: 0.95rem;
   }
   
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     body {
       display: flex;
     }
@@ -118,18 +118,18 @@
       display: block;
       width: 250px;
       min-height: 100vh;
-      background-color: var(--cor-sidebar);
-      padding: 1rem 0.75rem;
       flex-shrink: 0;
+      padding: 1rem 0.75rem;
+      background-color: var(--cor-sidebar);
     }
   
     .brand {
       display: flex;
-      align-items: center;
       gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
       font-size: 1.7rem;
       font-weight: 700;
-      margin-bottom: 2rem;
     }
   
     .brand-icon {
@@ -139,8 +139,8 @@
     }
   
     .menu {
-      list-style: disc;
       padding-left: 1.2rem;
+      list-style: disc;
     }
   
     .menu li {
@@ -149,9 +149,9 @@
   
     .menu a {
       color: var(--cor-texto);
-      text-decoration: none;
-      font-weight: 700;
       font-size: 0.98rem;
+      font-weight: 700;
+      text-decoration: none;
     }
   
     .content {
@@ -164,13 +164,13 @@
     }
   
     .welcome h1 {
-      font-size: 1.8rem;
       margin-bottom: 0.5rem;
+      font-size: 1.8rem;
     }
   
     .welcome h2 {
-      font-size: 1rem;
       max-width: none;
+      font-size: 1rem;
     }
   
     .avatar {
@@ -183,9 +183,9 @@
     }
   }
   
-  @media (min-width: 1200px) {
+  @media (width >= 1200px) {
     .cards {
-      grid-template-columns: repeat(2, 1fr);
       align-items: start;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
