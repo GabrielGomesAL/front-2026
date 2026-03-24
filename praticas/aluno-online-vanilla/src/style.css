@@ -193,7 +193,11 @@
     box-sizing: border-box;
   }
   
-  .login-page {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body.login-page {
     margin: 0;
     min-height: 100vh;
     font-family: arial, helvetica, sans-serif;
@@ -201,20 +205,35 @@
     color: #111;
   }
   
+  .skip-link {
+    position: absolute;
+    top: -48px;
+    left: 16px;
+    z-index: 1000;
+    padding: 10px 14px;
+    background-color: #111;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .skip-link:focus {
+    top: 16px;
+  }
+  
   .login-wrapper {
-    min-height: 100vh;
+    min-height: calc(100vh - 72px);
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 32px 16px 24px;
+    padding: 32px 16px 16px;
   }
   
   .login-card {
     width: 100%;
     max-width: 400px;
     background-color: #fff;
-    border: 1px solid #d9d9d9;
+    border: 1px solid #ddd;
     border-radius: 10px;
     padding: 28px 16px 20px;
   }
@@ -238,6 +257,7 @@
     font-size: 32px;
     font-weight: 700;
     color: #111;
+    text-align: center;
   }
   
   .form-group {
@@ -256,25 +276,26 @@
     height: 38px;
     padding: 0 12px;
     font-size: 16px;
-    border: 1px solid #d9d9d9;
+    border: 1px solid #ddd;
     border-radius: 4px;
     outline: none;
     background-color: #fff;
   }
   
   .form-group input:focus {
-    border-color: #999;
+    border-color: #888;
   }
   
   .form-group input.input-error {
-    border-color: #c40000;
+    border-color: #c00;
   }
   
   .error-message {
+    min-height: 22px;
     margin: 10px 0 0;
     font-size: 16px;
-    color: #c40000;
-    line-height: 1.4;
+    line-height: 1.35;
+    color: #c00;
   }
   
   .error-message:empty {
@@ -294,14 +315,39 @@
   }
   
   .login-button:hover {
-    background-color: #dedede;
+    background-color: #ddd;
+  }
+  
+  .login-button:focus-visible,
+  .form-group input:focus-visible,
+  .login-links a:focus-visible {
+    outline: 2px solid #111;
+    outline-offset: 2px;
+  }
+  
+  .login-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  
+  .login-links a {
+    font-size: 14px;
+    color: #111;
+    text-decoration: underline;
   }
   
   .login-footer {
-    margin-top: 38px;
+    padding: 0 16px 24px;
+    text-align: center;
+  }
+  
+  .login-footer p {
+    margin: 0;
     font-size: 16px;
     color: #111;
-    text-align: center;
   }
   
   @media (width <= 480px) {
@@ -322,7 +368,12 @@
       font-size: 17px;
     }
   
-    .login-footer {
+    .login-footer p {
       font-size: 15px;
+    }
+  
+    .login-links {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }

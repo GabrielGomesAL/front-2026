@@ -6,8 +6,11 @@
     <title>Login | Aluno Online</title>
     <script type="module" src="/src/main.js"></script>
   </head>
+
   <body class="login-page">
-    <main class="login-wrapper">
+    <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
+    <main id="main-content" class="login-wrapper">
       <section class="login-card" aria-labelledby="login-title">
         <div class="login-brand">
           <svg
@@ -16,10 +19,7 @@
             aria-hidden="true"
             focusable="false"
           >
-            <path
-              d="M4 24L32 12L60 24L32 36L4 24Z"
-              fill="currentColor"
-            ></path>
+            <path d="M4 24L32 12L60 24L32 36L4 24Z" fill="currentColor"></path>
             <path
               d="M16 30V40C16 45 24 50 32 50C40 50 48 45 48 40V30L32 37L16 30Z"
               fill="currentColor"
@@ -45,6 +45,7 @@
               id="email"
               name="email"
               autocomplete="username"
+              aria-describedby="email-error"
             />
             <p id="email-error" class="error-message" aria-live="polite"></p>
           </div>
@@ -56,15 +57,23 @@
               id="password"
               name="password"
               autocomplete="current-password"
+              aria-describedby="password-error"
             />
             <p id="password-error" class="error-message" aria-live="polite"></p>
           </div>
 
           <button type="submit" class="login-button">Entrar</button>
         </form>
-      </section>
 
-      <footer class="login-footer">© 2026. Todos os direitos reservados.</footer>
+        <nav class="login-links" aria-label="Links da página">
+          <a href="/index.html">Ir para a Dashboard</a>
+          <a href="#footer-info">Ir para o rodapé</a>
+        </nav>
+      </section>
     </main>
+
+    <footer id="footer-info" class="login-footer">
+      <p>© 2026. Todos os direitos reservados.</p>
+    </footer>
   </body>
 </html>
