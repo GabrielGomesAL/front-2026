@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Aluno Online</title>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body class="login-page">
+    <main class="login-wrapper">
+      <section class="login-card" aria-labelledby="login-title">
+        <div class="login-brand">
+          <svg
+            class="login-logo"
+            viewBox="0 0 64 64"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M4 24L32 12L60 24L32 36L4 24Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M16 30V40C16 45 24 50 32 50C40 50 48 45 48 40V30L32 37L16 30Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M48 27V44"
+              stroke="currentColor"
+              stroke-width="4"
+              stroke-linecap="round"
+            ></path>
+            <rect x="46" y="44" width="4" height="10" rx="1" fill="currentColor"></rect>
+            <circle cx="48" cy="27" r="2.5" fill="currentColor"></circle>
+          </svg>
+
+          <h1 id="login-title">Aluno Online</h1>
+        </div>
+
+        <form id="login-form" novalidate>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="username"
+            />
+            <p id="email-error" class="error-message" aria-live="polite"></p>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Senha</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              autocomplete="current-password"
+            />
+            <p id="password-error" class="error-message" aria-live="polite"></p>
+          </div>
+
+          <button type="submit" class="login-button">Entrar</button>
+        </form>
+      </section>
+
+      <footer class="login-footer">© 2026. Todos os direitos reservados.</footer>
+    </main>
+  </body>
+</html>
