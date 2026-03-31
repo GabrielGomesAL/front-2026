@@ -1,0 +1,23 @@
+.faltas-page .sidebar-link-faltas {
+    background-color: #2563eb;
+    color: #ffffff;
+  }
+  
+  .faltas-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .faltas-alert {
+    border-left: 6px solid #f59e0b;
+  }
+  
+  .faltas-alert-text {
+    margin: 0;
+    color: #374151;
+  }
+  
+  @media (max-width: 900px) {
+    .faltas-cards {
+      grid-template-columns: 1fr;
+    }
+  }
