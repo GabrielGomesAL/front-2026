@@ -1,0 +1,74 @@
+.sidebar {
+    width: 260px;
+    background-color: #111827;
+    color: #f9fafb;
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-right: 1px solid #1f2937;
+  }
+  
+  .sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  
+  .sidebar-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background-color: #2563eb;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  
+  .sidebar-brand-title {
+    margin: 0;
+    font-size: 20px;
+  }
+  
+  .sidebar-brand-subtitle {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #cbd5e1;
+  }
+  
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .sidebar-link {
+    padding: 12px 14px;
+    border-radius: 12px;
+    color: #e5e7eb;
+    font-weight: 600;
+    transition: 0.2s;
+  }
+  
+  .sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  @media (max-width: 900px) {
+    .sidebar {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid #1f2937;
+      padding: 16px;
+    }
+  
+    .sidebar-nav {
+      flex-direction: row;
+      overflow-x: auto;
+    }
+  
+    .sidebar-link {
+      white-space: nowrap;
+    }
+  }

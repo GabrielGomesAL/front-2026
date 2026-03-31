@@ -1,0 +1,41 @@
+.requerimentos-page .sidebar-link-requerimentos {
+    background-color: #2563eb;
+    color: #ffffff;
+  }
+  
+  .requerimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  
+  .requerimento-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 20px;
+    background-color: #ffffff;
+  }
+  
+  .requerimento-card h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    color: #111827;
+  }
+  
+  .requerimento-protocolo {
+    margin: 0 0 10px;
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .requerimento-text {
+    margin: 0 0 14px;
+    color: #4b5563;
+  }
+  
+  @media (max-width: 900px) {
+    .requerimentos-grid {
+      grid-template-columns: 1fr;
+    }
+  }
