@@ -1,0 +1,35 @@
+.notas-page .sidebar-link-notas {
+    background-color: #2563eb;
+    color: #ffffff;
+  }
+  
+  .notas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  
+  .notas-card {
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  
+  .notas-card-label {
+    margin: 0 0 8px;
+    color: #1d4ed8;
+    font-size: 14px;
+  }
+  
+  .notas-card-value {
+    margin: 0;
+    color: #1e3a8a;
+    font-size: 26px;
+  }
+  
+  @media (max-width: 900px) {
+    .notas-grid {
+      grid-template-columns: 1fr;
+    }
+  }
