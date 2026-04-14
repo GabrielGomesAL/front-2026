@@ -1,8 +1,68 @@
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Topbar from '../../components/Topbar/Topbar';
+import SummaryCards from '../../components/SummaryCards/SummaryCards';
+import DataTable from '../../components/DataTable/DataTable';
+import AlertBox from '../../components/AlertBox/AlertBox';
 import './FaltasPage.css';
 
 function FaltasPage() {
+  const summaryCards = [
+    {
+      label: 'Total de faltas',
+      value: '9',
+      helper: 'No semestre atual',
+    },
+    {
+      label: 'Disciplina crítica',
+      value: 'BD',
+      helper: 'Mais próxima do limite',
+    },
+    {
+      label: 'Situação geral',
+      value: 'Atenção',
+      helper: 'Mantenha a frequência',
+    },
+  ];
+
+  const tableColumns = [
+    'Disciplina',
+    'Aulas dadas',
+    'Faltas',
+    'Limite',
+    'Situação',
+  ];
+
+  const tableRows = [
+    [
+      'Front-end',
+      '32',
+      '2',
+      '8',
+      { label: 'Tranquilo', className: 'status-success' },
+    ],
+    [
+      'Banco de Dados',
+      '30',
+      '5',
+      '7',
+      { label: 'Atenção', className: 'status-warning' },
+    ],
+    [
+      'Engenharia de Software',
+      '28',
+      '1',
+      '7',
+      { label: 'OK', className: 'status-success' },
+    ],
+    [
+      'UX/UI',
+      '24',
+      '1',
+      '6',
+      { label: 'OK', className: 'status-success' },
+    ],
+  ];
+
   return (
     <div className="screen faltas-page">
       <Sidebar />
@@ -18,25 +78,7 @@ function FaltasPage() {
               permitido.
             </p>
 
-            <div className="info-grid faltas-cards">
-              <div className="info-card">
-                <p className="info-card-label">Total de faltas</p>
-                <p className="info-card-value">9</p>
-                <p className="info-card-helper">No semestre atual</p>
-              </div>
-
-              <div className="info-card">
-                <p className="info-card-label">Disciplina crítica</p>
-                <p className="info-card-value">BD</p>
-                <p className="info-card-helper">Mais próxima do limite</p>
-              </div>
-
-              <div className="info-card">
-                <p className="info-card-label">Situação geral</p>
-                <p className="info-card-value">Atenção</p>
-                <p className="info-card-helper">Mantenha a frequência</p>
-              </div>
-            </div>
+            <SummaryCards cards={summaryCards} className="faltas-cards" />
           </section>
 
           <section className="page-section">
@@ -45,70 +87,14 @@ function FaltasPage() {
               Dados resumidos da frequência acadêmica.
             </p>
 
-            <div className="table-wrapper">
-              <table className="base-table">
-                <thead>
-                  <tr>
-                    <th>Disciplina</th>
-                    <th>Aulas dadas</th>
-                    <th>Faltas</th>
-                    <th>Limite</th>
-                    <th>Situação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Front-end</td>
-                    <td>32</td>
-                    <td>2</td>
-                    <td>8</td>
-                    <td>
-                      <span className="status-badge status-success">
-                        Tranquilo
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Banco de Dados</td>
-                    <td>30</td>
-                    <td>5</td>
-                    <td>7</td>
-                    <td>
-                      <span className="status-badge status-warning">
-                        Atenção
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Engenharia de Software</td>
-                    <td>28</td>
-                    <td>1</td>
-                    <td>7</td>
-                    <td>
-                      <span className="status-badge status-success">OK</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>UX/UI</td>
-                    <td>24</td>
-                    <td>1</td>
-                    <td>6</td>
-                    <td>
-                      <span className="status-badge status-success">OK</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <DataTable columns={tableColumns} rows={tableRows} />
           </section>
 
-          <section className="page-section faltas-alert">
-            <h3 className="section-title">Observação</h3>
-            <p className="faltas-alert-text">
-              Banco de Dados está mais perto do limite de faltas. Evite novas
-              ausências nessa disciplina.
-            </p>
-          </section>
+          <AlertBox
+            title="Observação"
+            text="Banco de Dados está mais perto do limite de faltas. Evite novas ausências nessa disciplina."
+            className="faltas-alert"
+          />
         </main>
       </div>
     </div>
