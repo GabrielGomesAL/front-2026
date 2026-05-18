@@ -1,6 +1,18 @@
+import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 
 function Sidebar() {
+  function getLinkClassName(extraClass = '') {
+    return ({ isActive }) =>
+      [
+        'sidebar-link',
+        extraClass,
+        isActive ? 'sidebar-link-active' : '',
+      ]
+        .filter(Boolean)
+        .join(' ');
+  }
+
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
@@ -13,24 +25,37 @@ function Sidebar() {
       </div>
 
       <nav className="sidebar-nav" aria-label="Menu principal">
-        <a className="sidebar-link sidebar-link-dashboard" href="#dashboard">
+        <NavLink
+          to="/"
+          end
+          className={getLinkClassName('sidebar-link-dashboard')}
+        >
           Dashboard
-        </a>
-        <a className="sidebar-link sidebar-link-faltas" href="#faltas">
+        </NavLink>
+        <NavLink
+          to="/faltas"
+          className={getLinkClassName('sidebar-link-faltas')}
+        >
           Faltas
-        </a>
-        <a className="sidebar-link sidebar-link-notas" href="#notas">
+        </NavLink>
+        <NavLink
+          to="/notas"
+          className={getLinkClassName('sidebar-link-notas')}
+        >
           Notas
-        </a>
-        <a className="sidebar-link sidebar-link-boletos" href="#boletos">
+        </NavLink>
+        <NavLink
+          to="/boletos"
+          className={getLinkClassName('sidebar-link-boletos')}
+        >
           Boletos
-        </a>
-        <a
-          className="sidebar-link sidebar-link-requerimentos"
-          href="#requerimentos"
+        </NavLink>
+        <NavLink
+          to="/requerimentos"
+          className={getLinkClassName('sidebar-link-requerimentos')}
         >
           Requerimentos
-        </a>
+        </NavLink>
       </nav>
     </aside>
   );

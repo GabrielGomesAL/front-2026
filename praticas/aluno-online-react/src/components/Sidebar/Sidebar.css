@@ -54,6 +54,15 @@
   .sidebar-link:hover {
     background-color: rgba(255, 255, 255, 0.08);
   }
+
+  .sidebar-link-active {
+    background-color: #2563eb;
+    color: #ffffff;
+  }
+
+  .sidebar-link-active:hover {
+    background-color: #1d4ed8;
+  }
   
   @media (max-width: 900px) {
     .sidebar {

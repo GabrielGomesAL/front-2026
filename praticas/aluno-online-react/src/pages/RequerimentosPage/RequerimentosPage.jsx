@@ -1,17 +1,9 @@
-import Sidebar from '../../components/Sidebar/Sidebar';
-import Topbar from '../../components/Topbar/Topbar';
 import './RequerimentosPage.css';
 
 function RequerimentosPage() {
   return (
-    <div className="screen requerimentos-page">
-      <Sidebar />
-
-      <div className="screen-content">
-        <Topbar />
-
-        <main className="page-main">
-          <section className="page-section">
+    <main className="page-main requerimentos-page">
+      <section className="page-section">
             <h2 className="section-title">Listagem de requerimentos</h2>
             <p className="section-subtitle">
               Acompanhe solicitações abertas, protocolos e situação de análise.
@@ -98,9 +90,7 @@ function RequerimentosPage() {
               </table>
             </div>
           </section>
-        </main>
-      </div>
-    </div>
+    </main>
   );
 }
 
