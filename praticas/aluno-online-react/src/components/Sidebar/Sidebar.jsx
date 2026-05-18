@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 import './Sidebar.css';
 
 function Sidebar() {
+  const { logout } = useAuth();
+
   function getLinkClassName(extraClass = '') {
     return ({ isActive }) =>
       [
@@ -56,6 +59,13 @@ function Sidebar() {
         >
           Requerimentos
         </NavLink>
+        <button
+          type="button"
+          className="sidebar-link sidebar-logout-button"
+          onClick={logout}
+        >
+          Sair
+        </button>
       </nav>
     </aside>
   );

@@ -63,6 +63,13 @@
   .sidebar-link-active:hover {
     background-color: #1d4ed8;
   }
+
+  .sidebar-logout-button {
+    border: 0;
+    background-color: transparent;
+    text-align: left;
+    cursor: pointer;
+  }
   
   @media (max-width: 900px) {
     .sidebar {
