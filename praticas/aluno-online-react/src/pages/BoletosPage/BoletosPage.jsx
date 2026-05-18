@@ -1,17 +1,9 @@
-import Sidebar from '../../components/Sidebar/Sidebar';
-import Topbar from '../../components/Topbar/Topbar';
 import './BoletosPage.css';
 
 function BoletosPage() {
   return (
-    <div className="screen boletos-page">
-      <Sidebar />
-
-      <div className="screen-content">
-        <Topbar />
-
-        <main className="page-main">
-          <section className="page-section">
+    <main className="page-main boletos-page">
+      <section className="page-section">
             <h2 className="section-title">Listagem de boletos</h2>
             <p className="section-subtitle">
               Consulte vencimentos, valores e situação de pagamento.
@@ -64,9 +56,7 @@ function BoletosPage() {
               </article>
             </div>
           </section>
-        </main>
-      </div>
-    </div>
+    </main>
   );
 }
 

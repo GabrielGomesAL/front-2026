@@ -1,5 +1,3 @@
-import Sidebar from '../../components/Sidebar/Sidebar';
-import Topbar from '../../components/Topbar/Topbar';
 import SummaryCards from '../../components/SummaryCards/SummaryCards';
 import DataTable from '../../components/DataTable/DataTable';
 import AlertBox from '../../components/AlertBox/AlertBox';
@@ -64,14 +62,8 @@ function FaltasPage() {
   ];
 
   return (
-    <div className="screen faltas-page">
-      <Sidebar />
-
-      <div className="screen-content">
-        <Topbar />
-
-        <main className="page-main">
-          <section className="page-section">
+    <main className="page-main faltas-page">
+      <section className="page-section">
             <h2 className="section-title">Listagem de faltas</h2>
             <p className="section-subtitle">
               Consulte a quantidade de faltas por disciplina e acompanhe o limite
@@ -95,9 +87,7 @@ function FaltasPage() {
             text="Banco de Dados está mais perto do limite de faltas. Evite novas ausências nessa disciplina."
             className="faltas-alert"
           />
-        </main>
-      </div>
-    </div>
+    </main>
   );
 }
 

@@ -1,17 +1,9 @@
-import Sidebar from '../../components/Sidebar/Sidebar';
-import Topbar from '../../components/Topbar/Topbar';
 import './NotasPage.css';
 
 function NotasPage() {
   return (
-    <div className="screen notas-page">
-      <Sidebar />
-
-      <div className="screen-content">
-        <Topbar />
-
-        <main className="page-main">
-          <section className="page-section">
+    <main className="page-main notas-page">
+      <section className="page-section">
             <h2 className="section-title">Listagem de notas</h2>
             <p className="section-subtitle">
               Visualize as notas por disciplina e acompanhe seu desempenho no
@@ -86,9 +78,7 @@ function NotasPage() {
               </table>
             </div>
           </section>
-        </main>
-      </div>
-    </div>
+    </main>
   );
 }
 

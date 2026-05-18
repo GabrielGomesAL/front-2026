@@ -1,8 +1,3 @@
-.boletos-page .sidebar-link-boletos {
-    background-color: #2563eb;
-    color: #ffffff;
-  }
-  
   .boletos-list {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));

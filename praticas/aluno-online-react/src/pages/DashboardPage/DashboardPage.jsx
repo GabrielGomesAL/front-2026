@@ -1,17 +1,9 @@
-import Sidebar from '../../components/Sidebar/Sidebar';
-import Topbar from '../../components/Topbar/Topbar';
 import './DashboardPage.css';
 
 function DashboardPage() {
   return (
-    <div className="screen dashboard-page">
-      <Sidebar />
-
-      <div className="screen-content">
-        <Topbar />
-
-        <main className="page-main">
-          <section className="dashboard-hero">
+    <main className="page-main dashboard-page">
+      <section className="dashboard-hero">
             <h2 className="dashboard-hero-title">Dashboard acadêmica</h2>
             <p className="dashboard-hero-text">
               Acompanhe sua vida acadêmica em um único lugar, com visão rápida de
@@ -90,9 +82,7 @@ function DashboardPage() {
               </ul>
             </section>
           </div>
-        </main>
-      </div>
-    </div>
+    </main>
   );
 }
 
