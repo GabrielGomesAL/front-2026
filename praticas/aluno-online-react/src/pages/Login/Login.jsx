@@ -1,8 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FormInput from '../../components/FormInput/FormInput';
+import { useAuth } from '../../contexts/AuthContext';
 import './Login.css';
 
 function Login() {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
@@ -11,6 +16,19 @@ function Login() {
 
   function validateEmail(value) {
     return /\S+@\S+\.\S+/.test(value);
+  }
+
+  function getNomeUsuario(value) {
+    const nome = value.split('@')[0].replace(/[._-]+/g, ' ').trim();
+
+    if (!nome) {
+      return 'Aluno';
+    }
+
+    return nome
+      .split(' ')
+      .map((parte) => parte.charAt(0).toUpperCase() + parte.slice(1))
+      .join(' ');
   }
 
   function handleSubmit(event) {
@@ -38,7 +56,11 @@ function Login() {
     }
 
     if (isValid) {
-      alert('Login enviado com sucesso!');
+      login({
+        nome: getNomeUsuario(email),
+        email,
+      });
+      navigate('/');
     }
   }
 
