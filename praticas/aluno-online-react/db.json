@@ -1,0 +1,12 @@
+{
+  "requerimentos": [
+    {
+      "id": "1",
+      "tipo": "Declaração de matrícula",
+      "descricao": "Solicitação enviada para emissão de documento acadêmico.",
+      "dataRequerimento": "28/03/2026",
+      "protocolo": "#2026-0015",
+      "status": "Em análise"
+    }
+  ]
+}
