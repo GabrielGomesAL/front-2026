@@ -7,6 +7,7 @@ import FaltasPage from './pages/FaltasPage/FaltasPage';
 import Login from './pages/Login/Login';
 import NotasPage from './pages/NotasPage/NotasPage';
 import RequerimentosPage from './pages/RequerimentosPage/RequerimentosPage';
+import RequerimentoForm from './forms/RequerimentoForm';
 
 function App() {
   const { autenticado } = useAuth();
@@ -27,7 +28,10 @@ function App() {
         <Route path="faltas" element={<FaltasPage />} />
         <Route path="notas" element={<NotasPage />} />
         <Route path="boletos" element={<BoletosPage />} />
-        <Route path="requerimentos" element={<RequerimentosPage />} />
+        <Route path="requerimentos">
+          <Route index element={<RequerimentosPage />} />
+          <Route path="novo" element={<RequerimentoForm />} />
+        </Route>
       </Route>
       <Route path="/login" element={<Navigate to="/" replace />} />
       <Route path="*" element={<Navigate to="/" replace />} />

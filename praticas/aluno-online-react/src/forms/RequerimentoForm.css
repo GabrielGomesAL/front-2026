@@ -1,0 +1,82 @@
+.requerimento-form-section {
+  max-width: 900px;
+}
+
+.requerimento-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.requerimento-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.requerimento-form-field label {
+  color: #111827;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.requerimento-form-field select,
+.requerimento-form-field textarea,
+.requerimento-form-field input {
+  width: 100%;
+  border: 1px solid #9ca3af;
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #111827;
+  background-color: #ffffff;
+  font: inherit;
+}
+
+.requerimento-form-field select,
+.requerimento-form-date {
+  max-width: 360px;
+}
+
+.requerimento-form-field textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.requerimento-form-error {
+  margin: 0;
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.requerimento-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.requerimento-cancel-button,
+.requerimento-save-button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.requerimento-cancel-button {
+  color: #111827;
+  background-color: #e5e7eb;
+}
+
+.requerimento-save-button {
+  color: #ffffff;
+  background-color: #2563eb;
+}
+
+.requerimento-cancel-button:hover {
+  background-color: #d1d5db;
+}
+
+.requerimento-save-button:hover {
+  background-color: #1d4ed8;
+}

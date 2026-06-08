@@ -1,3 +1,27 @@
+.requerimentos-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .novo-requerimento-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 10px 14px;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .novo-requerimento-button:hover {
+    background-color: #1d4ed8;
+  }
+
   .requerimentos-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -30,6 +54,10 @@
   }
   
   @media (max-width: 900px) {
+    .requerimentos-header {
+      flex-direction: column;
+    }
+
     .requerimentos-grid {
       grid-template-columns: 1fr;
     }
