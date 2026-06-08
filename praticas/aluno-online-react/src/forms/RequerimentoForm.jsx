@@ -1,8 +1,11 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { cadastrarRequerimento } from '../services/requerimentoService';
 import './RequerimentoForm.css';
 
 function RequerimentoForm() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -16,9 +19,18 @@ function RequerimentoForm() {
     },
   });
 
-  function onSubmit(data) {
-    console.log('Requerimento cadastrado:', data);
+  async function onSubmit(data) {
+    const novoRequerimento = {
+      ...data,
+      status: 'Em análise',
+    };
+
+    const requerimentoCadastrado =
+      await cadastrarRequerimento(novoRequerimento);
+
+    console.log('Requerimento cadastrado:', requerimentoCadastrado);
     reset();
+    navigate('/requerimentos');
   }
 
   return (

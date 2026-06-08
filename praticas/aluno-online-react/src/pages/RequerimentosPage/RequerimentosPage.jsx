@@ -1,7 +1,38 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { listarRequerimentos } from '../../services/requerimentoService';
 import './RequerimentosPage.css';
 
+function getStatusClass(status) {
+  const statusClasses = {
+    Aguardando: 'status-warning',
+    Concluído: 'status-success',
+    'Em análise': 'status-info',
+  };
+
+  return statusClasses[status] || 'status-info';
+}
+
 function RequerimentosPage() {
+  const [requerimentos, setRequerimentos] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState('');
+
+  useEffect(() => {
+    async function carregarRequerimentos() {
+      try {
+        const dados = await listarRequerimentos();
+        setRequerimentos(dados);
+      } catch (error) {
+        setErro(error.message);
+      } finally {
+        setCarregando(false);
+      }
+    }
+
+    carregarRequerimentos();
+  }, []);
+
   return (
     <main className="page-main requerimentos-page">
       <section className="page-section">
@@ -18,78 +49,70 @@ function RequerimentosPage() {
           </Link>
         </div>
 
-        <div className="requerimentos-grid">
-          <article className="requerimento-card">
-            <h3>Declaração de matrícula</h3>
-            <p className="requerimento-protocolo">Protocolo #2026-0015</p>
-            <p className="requerimento-text">
-              Solicitação enviada para emissão de documento acadêmico.
-            </p>
-            <span className="status-badge status-info">Em análise</span>
-          </article>
+        {carregando && <p className="requerimentos-feedback">Carregando...</p>}
+        {erro && <p className="requerimentos-error">{erro}</p>}
 
-          <article className="requerimento-card">
-            <h3>2ª via de boleto</h3>
-            <p className="requerimento-protocolo">Protocolo #2026-0012</p>
-            <p className="requerimento-text">
-              Pedido concluído e documento já disponibilizado.
-            </p>
-            <span className="status-badge status-success">Concluído</span>
-          </article>
-
-          <article className="requerimento-card">
-            <h3>Aproveitamento de disciplina</h3>
-            <p className="requerimento-protocolo">Protocolo #2026-0009</p>
-            <p className="requerimento-text">
-              Aguardando análise da coordenação do curso.
-            </p>
-            <span className="status-badge status-warning">Aguardando</span>
-          </article>
-        </div>
+        {!carregando && !erro && (
+          <div className="requerimentos-grid">
+            {requerimentos.map((requerimento) => (
+              <article className="requerimento-card" key={requerimento.id}>
+                <h3>{requerimento.tipo}</h3>
+                <p className="requerimento-protocolo">
+                  Protocolo {requerimento.protocolo || `#${requerimento.id}`}
+                </p>
+                <p className="requerimento-text">{requerimento.descricao}</p>
+                <span
+                  className={`status-badge ${getStatusClass(
+                    requerimento.status,
+                  )}`}
+                >
+                  {requerimento.status}
+                </span>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
 
       <section className="page-section">
         <h3 className="section-title">Histórico recente</h3>
         <p className="section-subtitle">Últimos requerimentos cadastrados.</p>
 
-        <div className="table-wrapper">
-          <table className="base-table">
-            <thead>
-              <tr>
-                <th>Tipo</th>
-                <th>Protocolo</th>
-                <th>Data</th>
-                <th>Situação</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Declaração de matrícula</td>
-                <td>#2026-0015</td>
-                <td>28/03/2026</td>
-                <td>
-                  <span className="status-badge status-info">Em análise</span>
-                </td>
-              </tr>
-              <tr>
-                <td>2ª via de boleto</td>
-                <td>#2026-0012</td>
-                <td>24/03/2026</td>
-                <td>
-                  <span className="status-badge status-success">Concluído</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Aproveitamento de disciplina</td>
-                <td>#2026-0009</td>
-                <td>20/03/2026</td>
-                <td>
-                  <span className="status-badge status-warning">Aguardando</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        {carregando && <p className="requerimentos-feedback">Carregando...</p>}
+        {erro && <p className="requerimentos-error">{erro}</p>}
+
+        {!carregando && !erro && (
+          <div className="table-wrapper">
+            <table className="base-table">
+              <thead>
+                <tr>
+                  <th>Tipo</th>
+                  <th>Protocolo</th>
+                  <th>Data</th>
+                  <th>Situação</th>
+                </tr>
+              </thead>
+              <tbody>
+                {requerimentos.map((requerimento) => (
+                  <tr key={requerimento.id}>
+                    <td>{requerimento.tipo}</td>
+                    <td>{requerimento.protocolo || `#${requerimento.id}`}</td>
+                    <td>{requerimento.dataRequerimento}</td>
+                    <td>
+                      <span
+                        className={`status-badge ${getStatusClass(
+                          requerimento.status,
+                        )}`}
+                      >
+                        {requerimento.status}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </section>
     </main>
   );
