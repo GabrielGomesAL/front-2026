@@ -18,20 +18,7 @@ function Login() {
     return /\S+@\S+\.\S+/.test(value);
   }
 
-  function getNomeUsuario(value) {
-    const nome = value.split('@')[0].replace(/[._-]+/g, ' ').trim();
-
-    if (!nome) {
-      return 'Aluno';
-    }
-
-    return nome
-      .split(' ')
-      .map((parte) => parte.charAt(0).toUpperCase() + parte.slice(1))
-      .join(' ');
-  }
-
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     let isValid = true;
@@ -56,11 +43,12 @@ function Login() {
     }
 
     if (isValid) {
-      login({
-        nome: getNomeUsuario(email),
-        email,
-      });
-      navigate('/');
+      try {
+        await login({ email, senha });
+        navigate('/');
+      } catch (error) {
+        setSenhaError(error.message);
+      }
     }
   }
 
