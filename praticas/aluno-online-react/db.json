@@ -1,4 +1,14 @@
 {
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "Gabriel Gomes",
+      "email": "gabriel.gomes@aluno.com",
+      "senha": "123456",
+      "curso": "ADS",
+      "semestre": "5º semestre"
+    }
+  ],
   "requerimentos": [
     {
       "id": "1",

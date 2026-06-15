@@ -1,30 +1,78 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useMemo, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import {
+  autenticarUsuario,
+  limparSessao,
+  obterSessao,
+  salvarSessao,
+} from '../services/authService';
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [autenticado, setAutenticado] = useState(false);
-  const [usuario, setUsuario] = useState(null);
+  const sessaoInicial = obterSessao();
+  const [usuario, setUsuario] = useState(sessaoInicial?.usuario || null);
+  const [token, setToken] = useState(sessaoInicial?.token || null);
+  const autenticado = Boolean(usuario && token);
 
-  function login(dadosUsuario) {
-    setUsuario(dadosUsuario);
-    setAutenticado(true);
-  }
-
-  function logout() {
+  const logout = useCallback(() => {
+    limparSessao();
     setUsuario(null);
-    setAutenticado(false);
-  }
+    setToken(null);
+  }, []);
+
+  const login = useCallback(async (credenciais) => {
+    const sessao = await autenticarUsuario(credenciais);
+
+    salvarSessao(sessao);
+    setUsuario(sessao.usuario);
+    setToken(sessao.token);
+
+    return sessao;
+  }, []);
+
+  useEffect(() => {
+    function handleUnauthorized() {
+      logout();
+    }
+
+    window.addEventListener('auth:unauthorized', handleUnauthorized);
+
+    return () => {
+      window.removeEventListener('auth:unauthorized', handleUnauthorized);
+    };
+  }, [logout]);
+
+  useEffect(() => {
+    function verificarSessaoAoClicar() {
+      if (autenticado && !obterSessao()) {
+        logout();
+      }
+    }
+
+    window.addEventListener('click', verificarSessaoAoClicar);
+
+    return () => {
+      window.removeEventListener('click', verificarSessaoAoClicar);
+    };
+  }, [autenticado, logout]);
 
   const value = useMemo(
     () => ({
       autenticado,
+      token,
       usuario,
       login,
       logout,
     }),
-    [autenticado, usuario],
+    [autenticado, token, usuario, login, logout],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
