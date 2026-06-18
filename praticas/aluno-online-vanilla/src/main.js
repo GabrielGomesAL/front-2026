@@ -52,8 +52,8 @@ if (loginForm) {
 
   const validateField = (fieldName) => {
     const input = fields[fieldName];
-    const rules = validators[fieldName];
     const value = input.value;
+    const rules = validators[fieldName];
 
     for (const rule of rules) {
       if (!rule.test(value)) {
@@ -67,18 +67,17 @@ if (loginForm) {
   };
 
   const validateForm = () => {
-    const fieldNames = Object.keys(fields);
-    let isFormValid = true;
+    let isValid = true;
 
-    fieldNames.forEach((fieldName) => {
-      const isFieldValid = validateField(fieldName);
+    Object.keys(fields).forEach((fieldName) => {
+      const fieldIsValid = validateField(fieldName);
 
-      if (!isFieldValid) {
-        isFormValid = false;
+      if (!fieldIsValid) {
+        isValid = false;
       }
     });
 
-    return isFormValid;
+    return isValid;
   };
 
   Object.keys(fields).forEach((fieldName) => {
